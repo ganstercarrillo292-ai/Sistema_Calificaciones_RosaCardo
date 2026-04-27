@@ -3,127 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal Rosa Cardó</title>
+    <title>Portal Educativo - Rosa Cardó</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #2563eb;
-            --bg: #f8fafc;
-            --card-bg: #ffffff;
-            --text-main: #1e293b;
+            --primary: #1e40af;
+            --bg-light: #f1f5f9;
+            --white: #ffffff;
+            --text: #0f172a;
         }
 
         body { 
-            background: var(--bg); 
+            background-color: var(--bg-light); 
             font-family: 'Plus Jakarta Sans', sans-serif; 
-            margin: 0; 
-            color: var(--text-main);
+            margin: 0;
+            color: var(--text);
         }
 
-        /* Header Estilo Apple */
-        header {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
-            padding: 15px 5%;
+        /* Barra Superior Profesional */
+        .navbar {
+            background-color: var(--primary);
+            color: white;
+            padding: 15px 50px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid #e2e8f0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            font-weight: 600;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
 
-        .user-tag { font-weight: 600; font-size: 0.85rem; color: #64748b; }
-        .logout { color: #ef4444; text-decoration: none; font-weight: 700; margin-left: 15px; }
+        .logout-btn {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 15px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: white;
+            transition: 0.3s;
+        }
 
-        .container {
-            max-width: 1000px;
-            margin: 60px auto;
+        .logout-btn:hover { background: rgba(255, 255, 255, 0.2); }
+
+        /* Contenedor Principal */
+        .wrapper {
+            max-width: 1100px;
+            margin: 50px auto;
             padding: 0 20px;
             text-align: center;
         }
 
-        h1 { font-size: 2.8rem; font-weight: 800; letter-spacing: -1px; margin-bottom: 10px; color: #0f172a; }
-        .subtitle { color: #64748b; font-size: 1.1rem; margin-bottom: 50px; }
+        h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 5px; color: var(--primary); }
+        .tagline { color: #64748b; font-weight: 600; letter-spacing: 2px; margin-bottom: 40px; }
 
-        /* Grid de Cursos Mejorado */
-        .grid {
+        /* Grid de Cursos (Todos los que faltaban) */
+        .courses-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
             gap: 20px;
         }
 
         .course-card {
-            background: var(--card-bg);
-            padding: 30px 20px;
-            border-radius: 24px;
-            text-decoration: none;
-            color: var(--text-main);
-            font-weight: 700;
+            background: var(--white);
             border: 1px solid #e2e8f0;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 30px 15px;
+            border-radius: 20px;
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 700;
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 15px;
+            transition: all 0.3s ease;
         }
 
         .course-card:hover {
-            transform: translateY(-8px);
+            transform: translateY(-5px);
             border-color: var(--primary);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
         }
 
-        .icon-circle {
-            width: 50px;
-            height: 50px;
+        .icon-box {
+            font-size: 1.8rem;
             background: #eff6ff;
-            border-radius: 14px;
+            width: 60px;
+            height: 60px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
+            border-radius: 15px;
             color: var(--primary);
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="user-tag">Panel Administrativo • Mallares</div>
-        <a href="#" class="logout">Cerrar Sesión</a>
-    </header>
 
-    <div class="container">
-        <h1>Portal Educativo</h1>
-        <p class="subtitle">I.E. Rosa Cardó de Guarderas</p>
+    <nav class="navbar">
+        <span>Panel Administrativo - Mallares</span>
+        <a href="#" class="logout-btn">Cerrar Sesión ×</a>
+    </nav>
+
+    <div class="wrapper">
+        <h1>Portal Educativo "Rosa Cardó de Guarderas"</h1>
+        <p class="tagline">"BIENVENIDOS"</p>
         
-        <div class="grid">
-            <a href="notas_matematica.html" class="course-card">
-                <div class="icon-circle">∑</div>
-                Matemática
-            </a>
-            <a href="notas_comunicacion.html" class="course-card">
-                <div class="icon-circle">📖</div>
-                Comunicación
-            </a>
-            <a href="notas_religion.html" class="course-card">
-                <div class="icon-circle">⛪</div>
-                Religión
-            </a>
-            <a href="notas_ciencia.html" class="course-card">
-                <div class="icon-circle">🔬</div>
-                Ciencia
-            </a>
-            <a href="notas_dpcc.html" class="course-card">
-                <div class="icon-circle">⚖️</div>
-                D.P.C.C
-            </a>
-            <a href="notas_efisica.html" class="course-card">
-                <div class="icon-circle">⚽</div>
-                E. Física
-            </a>
+        <div class="courses-grid">
+            <a href="notas_matematica.html" class="course-card"><div class="icon-box">➕</div>Matemática</a>
+            <a href="notas_comunicacion.html" class="course-card"><div class="icon-box">📖</div>Comunicación</a>
+            <a href="notas_religion.html" class="course-card"><div class="icon-box">⛪</div>Religión</a>
+            <a href="notas_ciencia.html" class="course-card"><div class="icon-box">🔬</div>Ciencia</a>
+            <a href="notas_dpcc.html" class="course-card"><div class="icon-box">⚖️</div>D.P.C.C</a>
+            <a href="notas_efisica.html" class="course-card"><div class="icon-box">⚽</div>E. Física</a>
+            <a href="notas_ept.html" class="course-card"><div class="icon-box">💻</div>E.P.T</a>
+            <a href="notas_sociales.html" class="course-card"><div class="icon-box">🌎</div>Sociales</a>
+            <a href="notas_arte.html" class="course-card"><div class="icon-box">🎨</div>Arte</a>
+            <a href="notas_ingles.html" class="course-card"><div class="icon-box">abc</div>Inglés</a>
+            <a href="notas_tutoria.html" class="course-card"><div class="icon-box">🤝</div>Tutoría</a>
         </div>
     </div>
+
 </body>
 </html>
