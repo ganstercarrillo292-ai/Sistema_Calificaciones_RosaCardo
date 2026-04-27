@@ -6,13 +6,9 @@
     <title>Portal Educativo - Rosa Cardó</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary-blue: #1E3A8A;
-            --bg-dark: #0F172A; /* El fondo oscuro de tu imagen */
-        }
-
+        /* ESTILO GLOBAL: Fondo oscuro profundo */
         body { 
-            background-color: var(--bg-dark); 
+            background-color: #0F172A; 
             font-family: 'Inter', sans-serif; 
             margin: 0;
             display: flex;
@@ -21,18 +17,18 @@
             min-height: 100vh;
         }
 
-        /* LA TARJETA BLANCA DE TU IMAGEN */
+        /* TARJETA PRINCIPAL: Blanca y muy redondeada */
         .main-card {
             background: white;
             width: 90%;
-            max-width: 950px;
-            padding: 60px 20px;
-            border-radius: 50px; /* Bordes muy circulares */
+            max-width: 900px;
+            padding: 50px 30px;
+            border-radius: 50px; /* Bordes circulares como en tu foto */
             text-align: center;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
         }
 
-        .header-info {
+        .admin-info {
             color: #64748b;
             font-size: 0.85rem;
             font-weight: 600;
@@ -42,10 +38,10 @@
         .logout { color: #EF4444; text-decoration: none; margin-left: 5px; }
 
         h1 { 
-            color: var(--primary-blue); 
+            color: #1E3A8A; 
             font-weight: 800; 
-            font-size: 2.5rem;
-            margin: 5px 0;
+            font-size: 2.3rem;
+            margin: 10px 0;
         }
 
         .welcome {
@@ -56,66 +52,60 @@
             margin-bottom: 40px;
         }
 
-        /* GRID DE BOTONES CUADRADOS */
-        .courses-grid {
+        /* CUADRÍCULA DE CURSOS */
+        .grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr); /* 4 columnas como en tu foto */
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 15px;
-            max-width: 800px;
+            max-width: 850px;
             margin: auto;
         }
 
-        .course-btn {
+        .btn-curso {
             background: #F8FAFC;
             border: 1px solid #E2E8F0;
-            padding: 25px 10px;
+            padding: 20px;
             border-radius: 15px;
             text-decoration: none;
             color: #1E293B;
             font-weight: 700;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             display: flex;
-            flex-direction: row; /* Icono al lado del texto */
             align-items: center;
             justify-content: center;
-            gap: 8px;
-            transition: 0.2s;
+            gap: 10px;
+            transition: 0.3s;
         }
 
-        .course-btn:hover {
+        .btn-curso:hover {
             background: #F1F5F9;
             transform: translateY(-3px);
-            border-color: var(--primary-blue);
+            border-color: #1E3A8A;
         }
 
-        .icon { font-size: 1.1rem; }
-
-        /* Ajuste para tablets/celulares */
-        @media (max-width: 768px) {
-            .courses-grid { grid-template-columns: repeat(2, 1fr); }
-        }
+        .icon { font-size: 1.2rem; }
     </style>
 </head>
 <body>
     <div class="main-card">
-        <div class="header-info">
+        <div class="admin-info">
             Panel Administrativo - Mallares <a href="#" class="logout">Cerrar Sesión ×</a>
         </div>
         <h1>Portal Educativo "Rosa Cardó de Guarderas"</h1>
         <p class="welcome">"BIENVENIDOS"</p>
         
-        <div class="courses-grid">
-            <a href="notas_matematica.html" class="course-btn"><span class="icon">➕</span> Matemática</a>
-            <a href="notas_comunicacion.html" class="course-btn"><span class="icon">📖</span> Comunicación</a>
-            <a href="notas_religion.html" class="course-btn"><span class="icon">⛪</span> Religión</a>
-            <a href="notas_ciencia.html" class="course-btn"><span class="icon">🔬</span> Ciencia</a>
-            <a href="notas_dpcc.html" class="course-btn"><span class="icon">⚖️</span> D.P.C.C</a>
-            <a href="notas_efisica.html" class="course-btn"><span class="icon">⚽</span> E. Física</a>
-            <a href="notas_ept.html" class="course-btn"><span class="icon">💻</span> E.P.T</a>
-            <a href="notas_sociales.html" class="course-btn"><span class="icon">🌎</span> Sociales</a>
-            <a href="notas_arte.html" class="course-btn"><span class="icon">🎨</span> Arte</a>
-            <a href="notas_ingles.html" class="course-btn">abc Inglés</a>
-            <a href="notas_tutoria.html" class="course-btn"><span class="icon">🤝</span> Tutoría</a>
+        <div class="grid">
+            <a href="notas_matematica.html" class="btn-curso">➕ Matemática</a>
+            <a href="notas_comunicacion.html" class="btn-curso">📖 Comunicación</a>
+            <a href="notas_religion.html" class="btn-curso">⛪ Religión</a>
+            <a href="notas_ciencia.html" class="btn-curso">🔬 Ciencia</a>
+            <a href="notas_dpcc.html" class="btn-curso">⚖️ D.P.C.C</a>
+            <a href="notas_efisica.html" class="btn-curso">⚽ E. Física</a>
+            <a href="notas_ept.html" class="btn-curso">💻 E.P.T</a>
+            <a href="notas_sociales.html" class="btn-curso">🌎 Sociales</a>
+            <a href="notas_arte.html" class="btn-curso">🎨 Arte</a>
+            <a href="notas_ingles.html" class="btn-curso">abc Inglés</a>
+            <a href="notas_tutoria.html" class="btn-curso">🤝 Tutoría</a>
         </div>
     </div>
 </body>
