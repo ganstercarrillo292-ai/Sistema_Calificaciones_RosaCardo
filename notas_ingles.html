@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard | Rosa Cardó</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --bg: #020617; --card: #0F172A; --electric: #0EA5E9; --purple: #8B5CF6; }
+        body { background: var(--bg); font-family: 'Plus Jakarta Sans', sans-serif; color: white; padding: 40px 20px; }
+        .container { background: var(--card); max-width: 1100px; margin: auto; padding: 30px; border-radius: 20px; border: 1px solid #1E293B; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); }
+        header h1 { text-align: center; background: linear-gradient(to right, var(--electric), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 800; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        thead th { background: #1E293B; color: var(--electric); padding: 15px; text-transform: uppercase; font-size: 0.7rem; }
+        td { padding: 10px; border-bottom: 1px solid #1E293B; }
+        .editable-input { background: #1E293B; border: 1px solid #334155; color: white; padding: 8px; border-radius: 8px; width: 90%; }
+        .n-input { background: #020617; border: 1px solid var(--electric); color: white; width: 45px; padding: 6px; border-radius: 5px; text-align: center; }
+        .avg { font-weight: 800; color: var(--electric); }
+        .avg.fail { color: #F43F5E; }
+        .btn-save { background: linear-gradient(to r, var(--electric), var(--purple)); color: white; border: none; padding: 12px 30px; border-radius: 12px; cursor: pointer; font-weight: bold; }
+        .btn-back { color: #64748B; text-decoration: none; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header><h1>Rosa Cardó Digital</h1></header>
+    <table>
+        <thead><tr><th>N°</th><th>DNI</th><th>Alumno</th><th>C1</th><th>C2</th><th>C3</th><th>Prom</th></tr></thead>
+        <tbody id="cuerpoTabla"></tbody>
+    </table>
+    <div style="display:flex; justify-content: space-between; margin-top: 30px; align-items: center;">
+        <a href="index.html" class="btn-back">← Volver</a>
+        <button onclick="guardarNotas()" class="btn-save">Guardar Cambios</button>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+    const SUPABASE_URL = 'https://xxoegokfkmtgfvtbalic.supabase.co';
+    const SUPABASE_KEY = 'sb_publishable_O3Y-awoPMCWsirQMwR6y-Q_Fdm1i0Ff'; 
+    const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+    const cursoActual = "Matematica"; 
+    async function cargarNotas() {
+        const { data } = await _supabase.from('alumnos').select('*').eq('curso', cursoActual).order('nombre', { ascending: true });
+        const cuerpo = document.getElementById('cuerpoTabla'); cuerpo.innerHTML = "";
+        let c = 0; if (data) data.forEach(a => { c++; renderFila(a, c); });
+        for (let i = c + 1; i <= 40; i++) renderFila({dni:'', nombre:'', competencia1:0, competencia2:0, competencia3:0, promedio_final:0}, i);
+    }
+    function renderFila(a, n) {
+        const cl = a.promedio_final >= 11 ? '' : 'fail';
+        document.getElementById('cuerpoTabla').innerHTML += `<tr><td>${n}</td><td><input type="text" class="editable-input" value="${a.dni || ''}"></td><td><input type="text" class="editable-input" value="${a.nombre || ''}" style="text-align:left;"></td><td><input type="number" class="n-input" value="${a.competencia1 || 0}" oninput="calc(this)"></td><td><input type="number" class="n-input" value="${a.competencia2 || 0}" oninput="calc(this)"></td><td><input type="number" class="n-input" value="${a.competencia3 || 0}" oninput="calc(this)"></td><td><span class="avg ${cl}">${(a.promedio_final || 0).toString().padStart(2,'0')}</span></td></tr>`;
+    }
+    function calc(i) {
+        const f = i.closest('tr'); const ns = f.querySelectorAll('.n-input'); const p = f.querySelector('.avg');
+        let s = (parseFloat(ns[0].value)||0)+(parseFloat(ns[1].value)||0)+(parseFloat(ns[2].value)||0);
+        let res = Math.round(s/3); p.innerText = res.toString().padStart(2,'0'); p.className = res >= 11 ? 'avg' : 'avg fail';
+    }
+    async function guardarNotas() {
+        const datos = []; document.querySelectorAll("#cuerpoTabla tr").forEach(f => {
+            const ins = f.querySelectorAll("input");
+            if(ins[0].value) datos.push({ dni: ins[0].value, nombre: ins[1].value, competencia1: parseInt(ins[2].value)||0, competencia2: parseInt(ins[3].value)||0, competencia3: parseInt(ins[4].value)||0, promedio_final: parseInt(f.querySelector(".avg").innerText)||0, curso: cursoActual });
+        });
+        const { error } = await _supabase.from('alumnos').upsert(datos, { onConflict: 'dni' });
+        if (!error) { alert("✅ Sincronizado"); cargarNotas(); }
+    }
+    window.onload = cargarNotas;
+</script>
+</body>
+</html>

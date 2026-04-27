@@ -1,0 +1,66 @@
+body {
+    margin: 0; padding: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #e3f2fd;
+    display: flex; flex-direction: column; align-items: center;
+}
+
+.navbar {
+    width: 100%; background: #00338d; padding: 15px; color: white;
+    display: flex; justify-content: space-between; box-sizing: border-box;
+}
+
+/* Centrado para el Portal */
+.header-institucional {
+    text-align: center; 
+    margin: 30px 0;
+    width: 100%;
+}
+
+.titulo-principal { color: #00338d; font-size: 2.2rem; margin: 0; }
+.subtitulo { color: #555; font-size: 1.4rem; }
+
+/* Contenedor que evita el desborde */
+.cuadro-blanco {
+    background: white; padding: 25px; border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    width: 90%; max-width: 1250px;
+    overflow-x: auto; 
+}
+
+/* Estilo para el contenedor de las tarjetas */
+.grid-materias {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Estilo para cada botón de materia */
+.materia {
+    background-color: white;
+    border: 2px solid #00338d;
+    border-radius: 12px;
+    padding: 20px;
+    text-decoration: none; /* Quita el subrayado del enlace */
+    color: #00338d;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.materia:hover {
+    background-color: #00338d;
+    color: white;
+    transform: translateY(-5px);
+}
+
+.materia span {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+.btn-volver:hover {
+    background-color: #00266b; /* Un azul más oscuro al pasar el mouse */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
