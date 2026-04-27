@@ -7,112 +7,118 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-dark: #0F172A; /* Azul oscuro profundo de tu imagen */
-            --primary-blue: #1E3A8A;
-            --text-gray: #64748b;
+            --primary-blue: #003399; /* Azul marino de la barra */
+            --sky-bg: #DDEEFC;      /* Fondo celeste claro */
         }
 
         body { 
-            background-color: var(--bg-dark); 
+            background-color: var(--sky-bg); 
             font-family: 'Inter', sans-serif; 
             margin: 0;
             display: flex;
-            align-items: center;
-            justify-content: center;
+            flex-direction: column;
             min-height: 100vh;
         }
 
-        /* Tarjeta Blanca Principal */
-        .main-card {
-            background: white;
-            width: 90%;
-            max-width: 950px;
-            padding: 60px 40px;
-            border-radius: 50px; /* Bordes muy redondeados */
-            text-align: center;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
-        }
-
-        .header-top {
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--text-gray);
-            margin-bottom: 10px;
-        }
-
-        .logout { color: #EF4444; text-decoration: none; margin-left: 5px; }
-
-        h1 { 
-            color: var(--primary-blue); 
-            font-weight: 800; 
-            font-size: 2.5rem;
-            margin: 0;
-        }
-
-        .welcome {
+        /* Barra superior azul */
+        .top-bar {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 12px 40px;
+            display: flex;
+            justify-content: space-between;
             font-size: 0.9rem;
-            color: var(--text-gray);
-            letter-spacing: 3px;
-            font-weight: 700;
-            margin: 15px 0 45px 0;
+            font-weight: bold;
         }
 
-        /* Grid de Botones (Fichas) */
-        .courses-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr); /* 4 columnas como en tu captura */
-            gap: 15px;
-        }
-
-        .course-btn {
-            background: #F8FAFC;
-            border: 1px solid #E2E8F0;
-            padding: 22px 10px;
-            border-radius: 15px;
-            text-decoration: none;
-            color: #1E293B;
-            font-weight: 700;
-            font-size: 0.9rem;
+        .main-container {
+            flex: 1;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-            transition: all 0.2s ease;
+            padding: 20px;
         }
 
-        .course-btn:hover {
-            background: #F1F5F9;
-            transform: translateY(-3px);
-            border-color: var(--primary-blue);
+        /* Tarjeta blanca central */
+        .white-card {
+            background: white;
+            width: 100%;
+            max-width: 950px;
+            padding: 50px;
+            border-radius: 40px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
         }
 
-        /* Responsivo para celulares */
-        @media (max-width: 768px) {
-            .courses-grid { grid-template-columns: repeat(2, 1fr); }
-            h1 { font-size: 1.8rem; }
+        h1 { 
+            color: var(--primary-blue); 
+            font-size: 2.2rem; 
+            font-weight: 800;
+            margin-bottom: 5px;
         }
+
+        .welcome {
+            font-size: 1rem;
+            font-weight: 800;
+            margin-bottom: 40px;
+            color: #333;
+        }
+
+        /* Grid de botones (Fichas con borde azul) */
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 15px;
+        }
+
+        .course-box {
+            border: 2px solid var(--primary-blue);
+            background: white;
+            border-radius: 15px;
+            padding: 25px 10px;
+            text-decoration: none;
+            color: #003399;
+            font-weight: 800;
+            font-size: 0.85rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            transition: 0.2s;
+        }
+
+        .course-box:hover {
+            background: #f0f7ff;
+            transform: scale(1.02);
+        }
+
+        .logout-link { color: white; text-decoration: none; }
     </style>
 </head>
 <body>
-    <div class="main-card">
-        <div class="header-top">
-            Panel Administrativo - Mallares <a href="#" class="logout">Cerrar Sesión ×</a>
-        </div>
-        <h1>Portal Educativo "Rosa Cardó de Guarderas"</h1>
-        <p class="welcome">"BIENVENIDOS"</p>
-        
-        <div class="courses-grid">
-            <a href="notas_matematica.html" class="course-btn">➕ Matemática</a>
-            <a href="notas_comunicacion.html" class="course-btn">📖 Comunicación</a>
-            <a href="notas_religion.html" class="course-btn">⛪ Religión</a>
-            <a href="notas_ciencia.html" class="course-btn">🔬 Ciencia</a>
-            <a href="notas_dpcc.html" class="course-btn">⚖️ D.P.C.C</a>
-            <a href="notas_efisica.html" class="course-btn">⚽ E. Física</a>
-            <a href="notas_ept.html" class="course-btn">💻 E.P.T</a>
-            <a href="notas_sociales.html" class="course-btn">🌎 Sociales</a>
-            <a href="notas_arte.html" class="course-btn">🎨 Arte</a>
-            <a href="notas_ingles.html" class="course-btn">abc Inglés</a>
-            <a href="notas_tutoria.html" class="course-btn">🤝 Tutoría</a>
+    <div class="top-bar">
+        <span>Panel Administrativo - Mallares</span>
+        <a href="#" class="logout-link">Cerrar Sesión X</a>
+    </div>
+
+    <div class="main-container">
+        <div class="white-card">
+            <h1>Portal Educativo "Rosa Cardó de Guarderas"</h1>
+            <p class="welcome">"BIENVENIDOS"</p>
+            
+            <div class="courses-grid">
+                <a href="notas_matematica.html" class="course-box">➕<br>Matemática</a>
+                <a href="notas_comunicacion.html" class="course-box">📖<br>Comunicación</a>
+                <a href="notas_religion.html" class="course-box">⛪<br>Religión</a>
+                <a href="notas_ciencia.html" class="course-box">🔬<br>Ciencia</a>
+                <a href="notas_dpcc.html" class="course-box">⚖️<br>D.P.C.C</a>
+                <a href="notas_efisica.html" class="course-box">⚽<br>E. Física</a>
+                <a href="notas_ept.html" class="course-box">💻<br>E.P.T</a>
+                <a href="notas_sociales.html" class="course-box">🌎<br>Sociales</a>
+                <a href="notas_arte.html" class="course-box">🎨<br>Arte</a>
+                <a href="notas_ingles.html" class="course-box">abc<br>Inglés</a>
+                <a href="notas_tutoria.html" class="course-box">🤝<br>Tutoría</a>
+            </div>
         </div>
     </div>
 </body>
