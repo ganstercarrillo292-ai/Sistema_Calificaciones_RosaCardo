@@ -1,66 +1,101 @@
-body {
-    margin: 0; padding: 0;
-    font-family: 'Segoe UI', Arial, sans-serif;
-    background: #e3f2fd;
-    display: flex; flex-direction: column; align-items: center;
-}
+<style>
+    :root {
+        --primary: #1E3A8A;   /* Azul Institucional */
+        --accent: #3B82F6;    /* Azul para botones */
+        --bg: #F3F4F6;        /* Fondo gris claro que ya te gustó */
+        --white: #FFFFFF;     /* Blanco para el cuadro */
+        --border: #E5E7EB;    /* Gris muy suave para bordes */
+    }
 
-.navbar {
-    width: 100%; background: #00338d; padding: 15px; color: white;
-    display: flex; justify-content: space-between; box-sizing: border-box;
-}
+    body { 
+        background: var(--bg); 
+        font-family: 'Inter', sans-serif; 
+        margin: 0; 
+        padding: 40px 20px; 
+    }
 
-/* Centrado para el Portal */
-.header-institucional {
-    text-align: center; 
-    margin: 30px 0;
-    width: 100%;
-}
+    /* EL CUADRO PRINCIPAL - Ahora más claro y limpio */
+    .container { 
+        background: var(--white); 
+        max-width: 1100px; 
+        margin: auto; 
+        padding: 40px; 
+        border-radius: 16px; 
+        /* Sombra suave para que parezca que flota sobre el fondo */
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        border: 1px solid var(--border);
+    }
 
-.titulo-principal { color: #00338d; font-size: 2.2rem; margin: 0; }
-.subtitulo { color: #555; font-size: 1.4rem; }
+    header { text-align: center; margin-bottom: 30px; }
+    header h1 { color: var(--primary); margin: 0; font-weight: 800; font-size: 1.8rem; }
+    header p { color: #6B7280; font-weight: 500; }
 
-/* Contenedor que evita el desborde */
-.cuadro-blanco {
-    background: white; padding: 25px; border-radius: 20px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    width: 90%; max-width: 1250px;
-    overflow-x: auto; 
-}
+    /* TABLA - Fondo blanco para que no canse la vista */
+    .table-res { 
+        border-radius: 12px; 
+        overflow: hidden; 
+        border: 1px solid var(--border); 
+        background: var(--white);
+    }
 
-/* Estilo para el contenedor de las tarjetas */
-.grid-materias {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 20px;
-    padding: 20px;
-}
+    table { width: 100%; border-collapse: collapse; }
+    
+    thead th { 
+        background: #F9FAFB; /* Fondo muy claro para el encabezado de la tabla */
+        color: #4B5563;      /* Texto gris oscuro profesional */
+        padding: 16px; 
+        font-size: 0.75rem; 
+        text-transform: uppercase;
+        border-bottom: 2px solid var(--border);
+    }
 
-/* Estilo para cada botón de materia */
-.materia {
-    background-color: white;
-    border: 2px solid #00338d;
-    border-radius: 12px;
-    padding: 20px;
-    text-decoration: none; /* Quita el subrayado del enlace */
-    color: #00338d;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    transition: all 0.3s ease;
-}
+    td { 
+        padding: 14px; 
+        border-bottom: 1px solid var(--border); 
+        text-align: center; 
+        color: #1F2937;
+    }
 
-.materia:hover {
-    background-color: #00338d;
-    color: white;
-    transform: translateY(-5px);
-}
+    /* Inputs más estéticos */
+    .editable-input { 
+        border: 1px solid var(--border); 
+        padding: 8px 12px; 
+        width: 90%; 
+        border-radius: 8px; 
+        font-size: 0.9rem;
+        transition: 0.2s;
+    }
+    .editable-input:focus { 
+        outline: none; 
+        border-color: var(--accent); 
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1); 
+    }
 
-.materia span {
-    font-size: 2rem;
-    margin-bottom: 10px;
-}
-.btn-volver:hover {
-    background-color: #00266b; /* Un azul más oscuro al pasar el mouse */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-}
+    .n-input { 
+        width: 45px; 
+        text-align: center; 
+        font-weight: 700; 
+        border: 1px solid var(--border); 
+        border-radius: 6px; 
+        padding: 6px; 
+    }
+
+    /* Promedios */
+    .avg { font-weight: 800; padding: 4px 10px; border-radius: 6px; }
+    .pass { background: #E0E7FF; color: #1E40AF; }
+    .fail { background: #FEE2E2; color: #991B1B; }
+
+    /* Botones */
+    .btn-group { display: flex; justify-content: space-between; margin-top: 30px; }
+    .btn { 
+        padding: 12px 24px; 
+        border-radius: 10px; 
+        font-weight: 700; 
+        cursor: pointer; 
+        border: none; 
+        transition: 0.3s;
+    }
+    .btn-save { background: var(--primary); color: white; }
+    .btn-save:hover { background: #172554; transform: translateY(-1px); }
+    .btn-back { background: #E5E7EB; color: #374151; text-decoration: none; font-size: 0.9rem; }
+</style>
