@@ -3,123 +3,146 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal Educativo - Rosa Cardó</title>
+    <title>Dashboard Educativo | Rosa Cardó</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #1e40af;
-            --bg-light: #f1f5f9;
-            --white: #ffffff;
-            --text: #0f172a;
+            --accent: #3b82f6;
+            --bg: #f1f5f9;
         }
 
         body { 
-            background-color: var(--bg-light); 
+            background: var(--bg); 
             font-family: 'Plus Jakarta Sans', sans-serif; 
             margin: 0;
-            color: var(--text);
+            color: #1e293b;
         }
 
-        /* Barra Superior Profesional */
-        .navbar {
-            background-color: var(--primary);
-            color: white;
-            padding: 15px 50px;
+        /* Navbar estilo Moderno */
+        nav {
+            background: var(--primary);
+            padding: 1rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-weight: 600;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
 
-        .logout-btn {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 8px 15px;
-            border-radius: 8px;
-            text-decoration: none;
-            color: white;
-            transition: 0.3s;
-        }
+        .brand { color: white; font-weight: 800; font-size: 1.2rem; }
+        .logout { color: #bfdbfe; text-decoration: none; font-size: 0.9rem; border: 1px solid #3b82f6; padding: 5px 15px; border-radius: 8px; }
 
-        .logout-btn:hover { background: rgba(255, 255, 255, 0.2); }
-
-        /* Contenedor Principal */
-        .wrapper {
-            max-width: 1100px;
-            margin: 50px auto;
-            padding: 0 20px;
+        .hero {
             text-align: center;
+            padding: 60px 20px;
         }
 
-        h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 5px; color: var(--primary); }
-        .tagline { color: #64748b; font-weight: 600; letter-spacing: 2px; margin-bottom: 40px; }
+        h1 { font-size: 2.8rem; font-weight: 800; color: #0f172a; margin: 0; }
+        .school-name { color: var(--accent); font-weight: 600; font-size: 1.1rem; margin-top: 10px; display: block; letter-spacing: 1px; }
 
-        /* Grid de Cursos (Todos los que faltaban) */
-        .courses-grid {
+        /* Grid de 11 Cursos */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto 100px;
+            padding: 0 20px;
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             gap: 20px;
         }
 
-        .course-card {
-            background: var(--white);
-            border: 1px solid #e2e8f0;
-            padding: 30px 15px;
-            border-radius: 20px;
+        .card {
+            background: white;
+            padding: 35px 20px;
+            border-radius: 24px;
             text-decoration: none;
-            color: var(--text);
-            font-weight: 700;
+            color: inherit;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 15px;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid #e2e8f0;
         }
 
-        .course-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 30px rgba(0,0,0,0.05);
+            border-color: var(--accent);
         }
 
-        .icon-box {
-            font-size: 1.8rem;
-            background: #eff6ff;
+        .icon-circle {
             width: 60px;
             height: 60px;
+            background: #eff6ff;
+            border-radius: 18px;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 15px;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
             color: var(--primary);
         }
+
+        .course-title { font-weight: 700; font-size: 1rem; }
     </style>
 </head>
 <body>
 
-    <nav class="navbar">
-        <span>Panel Administrativo - Mallares</span>
-        <a href="#" class="logout-btn">Cerrar Sesión ×</a>
-    </nav>
+<nav>
+    <div class="brand">SECURITY VISION <span style="font-weight:400; opacity:0.7;">| Admin</span></div>
+    <a href="#" class="logout">Cerrar Sesión</a>
+</nav>
 
-    <div class="wrapper">
-        <h1>Portal Educativo "Rosa Cardó de Guarderas"</h1>
-        <p class="tagline">"BIENVENIDOS"</p>
-        
-        <div class="courses-grid">
-            <a href="notas_matematica.html" class="course-card"><div class="icon-box">➕</div>Matemática</a>
-            <a href="notas_comunicacion.html" class="course-card"><div class="icon-box">📖</div>Comunicación</a>
-            <a href="notas_religion.html" class="course-card"><div class="icon-box">⛪</div>Religión</a>
-            <a href="notas_ciencia.html" class="course-card"><div class="icon-box">🔬</div>Ciencia</a>
-            <a href="notas_dpcc.html" class="course-card"><div class="icon-box">⚖️</div>D.P.C.C</a>
-            <a href="notas_efisica.html" class="course-card"><div class="icon-box">⚽</div>E. Física</a>
-            <a href="notas_ept.html" class="course-card"><div class="icon-box">💻</div>E.P.T</a>
-            <a href="notas_sociales.html" class="course-card"><div class="icon-box">🌎</div>Sociales</a>
-            <a href="notas_arte.html" class="course-card"><div class="icon-box">🎨</div>Arte</a>
-            <a href="notas_ingles.html" class="course-card"><div class="icon-box">abc</div>Inglés</a>
-            <a href="notas_tutoria.html" class="course-card"><div class="icon-box">🤝</div>Tutoría</a>
-        </div>
-    </div>
+<div class="hero">
+    <h1>Panel de Calificaciones</h1>
+    <span class="school-name">I.E. ROSA CARDÓ DE GUARDERAS - SULLANA</span>
+</div>
+
+<div class="container">
+    <a href="notas_matematica.html" class="card">
+        <div class="icon-circle">➕</div>
+        <div class="course-title">Matemática</div>
+    </a>
+    <a href="notas_comunicacion.html" class="card">
+        <div class="icon-circle">📖</div>
+        <div class="course-title">Comunicación</div>
+    </a>
+    <a href="notas_religion.html" class="card">
+        <div class="icon-circle">⛪</div>
+        <div class="course-title">Religión</div>
+    </a>
+    <a href="notas_ciencia.html" class="card">
+        <div class="icon-circle">🔬</div>
+        <div class="course-title">Ciencia</div>
+    </a>
+    <a href="notas_dpcc.html" class="card">
+        <div class="icon-circle">⚖️</div>
+        <div class="course-title">D.P.C.C</div>
+    </a>
+    <a href="notas_efisica.html" class="card">
+        <div class="icon-circle">⚽</div>
+        <div class="course-title">E. Física</div>
+    </a>
+    <a href="notas_ept.html" class="card">
+        <div class="icon-circle">💻</div>
+        <div class="course-title">E.P.T</div>
+    </a>
+    <a href="notas_sociales.html" class="card">
+        <div class="icon-circle">🌎</div>
+        <div class="course-title">Sociales</div>
+    </a>
+    <a href="notas_arte.html" class="card">
+        <div class="icon-circle">🎨</div>
+        <div class="course-title">Arte</div>
+    </a>
+    <a href="notas_ingles.html" class="card">
+        <div class="icon-circle">abc</div>
+        <div class="course-title">Inglés</div>
+    </a>
+    <a href="notas_tutoria.html" class="card">
+        <div class="icon-circle">🤝</div>
+        <div class="course-title">Tutoría</div>
+    </a>
+</div>
 
 </body>
 </html>
